@@ -22,10 +22,6 @@
     "standard": "^7.0.0",
     "tape": "^4.0.0"
   },
-  "files": [
-    "index.js",
-    "test.js"
-  ],
   "dependencies": {
     "dlv": "^1.1.1",
     "redux-loop": "^4.2.4",
