@@ -1,0 +1,35 @@
+{
+  "name": "redux-ssr-fetch",
+  "main": "index.js",
+  "version": "0.0.0",
+  "description": "",
+  "license": "MIT",
+  "repository": "ajoslin/redux-ssr-fetch",
+  "author": {
+    "name": "Andrew Joslin",
+    "email": "andrewtjoslin@gmail.com",
+    "url": "ajoslin.com"
+  },
+  "scripts": {
+    "test": "standard && tape test.js"
+  },
+  "keywords": [
+    ""
+  ],
+  "devDependencies": {
+    "redux": "^3.7.2",
+    "spok": "^0.9.1",
+    "standard": "^7.0.0",
+    "tape": "^4.0.0"
+  },
+  "files": [
+    "index.js",
+    "test.js"
+  ],
+  "dependencies": {
+    "dlv": "^1.1.1",
+    "redux-loop": "^4.2.4",
+    "redux-nano": "^1.0.0",
+    "xtend": "^4.0.1"
+  }
+}
