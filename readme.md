@@ -59,13 +59,13 @@ dispatch(REQUEST({
     payload: responseData
   }),
   failActionCreator: (error) => ({
-    type: 'FETCH_PRODUCTS_ERROR,
+    type: 'FETCH_PRODUCTS_ERROR',
     payload: error
   })
 }))
 ```
 
-Next.js Example:
+React Component:
 
 ```js
 function ProductsComponent ({ products, error, getProducts }) {
@@ -84,8 +84,8 @@ export default connect(state => ({
   getProducts: (data) => dispatch(REQUEST({
     method: getProducts,
     data,
-    onSuccess: (payload) => ({ type: 'FETCH_PRODUCTS_SUCCESS', payload }),
-    onError: (payload) => ({ type: 'FETCH_PRODUCTS_ERROR', payload })
+    successActionCreator: (payload) => ({ type: 'FETCH_PRODUCTS_SUCCESS', payload }),
+    failActionCreator: (payload) => ({ type: 'FETCH_PRODUCTS_ERROR', payload })
   }))
 })
 ```
