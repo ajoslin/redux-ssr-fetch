@@ -46,11 +46,12 @@ module.exports = function createReduxSsrFetchReducer (initialState) {
     )
 
     function runMethod () {
-      return Promise.resolve(
-        method(data, extend(state.defaults, {
-          headers: extend(state.defaults ? state.defaults.headers : {}, state.headers)
-        }))
-      )
+      return Promise.resolve()
+        .then(function () {
+          return method(data, extend(state.defaults, {
+            headers: extend(state.defaults ? state.defaults.headers : {}, state.headers)
+          }))
+        })
         .catch(function onClientSideError (error) {
           error = error || {}
           error.message = error.message || 'Unknown Error'

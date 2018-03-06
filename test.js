@@ -4,7 +4,7 @@ var actions = require('./actions')
 var createRequestReducer = require('./reducer')
 
 var { createReducer } = require('redux-nano')
-var { createStore, compose, applyMiddleware } = require('redux');
+var { createStore, compose } = require('redux')
 var { install, combineReducers } = require('redux-loop')
 
 function Store ({ handlers } = {}) {
@@ -90,7 +90,7 @@ test('authorization and set-cookie are taken from fetch-formatted response', t =
       headers: {
         preset: 'header',
         'set-cookie': 'cookie',
-        authorization: 'Bearer 456',
+        authorization: 'Bearer 456'
       },
       defaults: {
         preset: 'default'
@@ -141,5 +141,23 @@ test('failActionCreator', t => {
     failActionCreator: json => {
       return { type: 'my_fail', payload: json }
     }
+  }))
+})
+
+test('REQUEST with immediate error', t => {
+  const thrownError = new Error()
+  var store = Store({
+    handlers: {
+      'my_fail': (state, action) => {
+        t.equal(action.payload, thrownError)
+        t.end()
+      }
+    }
+  })
+  store.dispatch(actions.REQUEST({
+    method: () => {
+      throw thrownError
+    },
+    failActionCreator: payload => ({ type: 'my_fail', payload })
   }))
 })
